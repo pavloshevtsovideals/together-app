@@ -344,22 +344,6 @@ export default function CheckIn(props: CheckInProps) {
           </FormRow>
           <FormRow>
             <Select
-              error={ableToAssistError}
-              name='isAbleToAssist'
-              label='Are you able to help with anti-war initiatives?'
-              value={isAbleToAssistValue}
-              selected=''
-              onChange={isAbleToAssistChange}
-            >
-              <option disabled value=''>
-                Select
-              </option>
-              <option value='yes'>Yes</option>
-              <option value='no'>No</option>
-            </Select>
-          </FormRow>
-          <FormRow>
-            <Select
               error={ableToWorkError}
               name='isAbleToWork'
               label='Are you able to work?'
