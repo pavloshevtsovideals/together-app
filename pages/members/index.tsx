@@ -98,10 +98,6 @@ export default function Employees({ members, teamId }: MembersProps) {
       filteredList = filterMembersByIsMobilized(filterIsMobilized, filteredList);
     }
 
-    if (filterAbleToAssist) {
-      filteredList = filterMembersByIsAbleToAssist(filterAbleToAssist, filteredList);
-    }
-
     return filteredList;
   };
 
