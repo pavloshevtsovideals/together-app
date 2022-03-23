@@ -167,8 +167,6 @@ export default function Employees({ members, teamId }: MembersProps) {
         handleIsSafeFilter={handleIsSafeFilter}
         filterIsMobilized={filterIsMobilized}
         handleIsMobilizedFilter={handleIsMobilizedFilter}
-        filterAbleToAssist={filterAbleToAssist}
-        handleAbleToAssistFilter={handleAbleToAssistFilter}
         filterCanWork={filterCanWork}
         handleCanWorkFilter={handleCanWorkFilter}
         handleClearFilters={handleClearFilters}
