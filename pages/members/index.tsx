@@ -10,7 +10,6 @@ import {
   filterMembersByLastCheckInString,
   filterMembersByIsSafe,
   filterMembersByIsMobilized,
-  filterMembersByIsAbleToAssist,
   filterMembersByState,
   filterMembersByCanWork,
   getCitiesForFiltersByCountryOrState,
@@ -40,7 +39,6 @@ export default function Employees({ members, teamId }: MembersProps) {
   const [filterIsSafe, setFilterIsSafe] = useState<BooleanPropString>('both');
   const [filterIsMobilized, setFilterIsMobilized] = useState<BooleanPropString>('both');
   const [filterCanWork, setFilterCanWork] = useState<BooleanPropString>('both');
-  const [filterAbleToAssist, setFilterAbleToAssist] = useState<BooleanPropString>('both');
   const [filterByCheckIn, setFilterByCheckIn] = useState<CheckInString | ''>('');
   const [filteredMembers, setFilteredMembers] = useState<MemberDto[]>(members);
 
@@ -51,7 +49,6 @@ export default function Employees({ members, teamId }: MembersProps) {
     setFilterIsSafe('both');
     setFilterIsMobilized('both');
     setFilterCanWork('both');
-    setFilterAbleToAssist('both');
     setFilterByCheckIn('');
   };
 
@@ -112,7 +109,6 @@ export default function Employees({ members, teamId }: MembersProps) {
       filterIsSafe,
       filterCanWork,
       filterIsMobilized,
-      filterAbleToAssist,
     ]);
 
   const handleCountryFilter = (country: string) => {
@@ -149,9 +145,6 @@ export default function Employees({ members, teamId }: MembersProps) {
     setFilterIsMobilized(isMobilized);
   };
 
-  const handleAbleToAssistFilter = (isAbleToAssist: BooleanPropString) => {
-    setFilterAbleToAssist(isAbleToAssist);
-  };
 
   const memoizedStates = useMemo(() => getStatesForFiltersByCountry(filterByCountry, upToDateMembers), [filterByCountry]);
   const memoizedCities = useMemo(() => getCitiesForFiltersByCountryOrState(filterByCountry, filterByState, upToDateMembers), [filterByCountry, filterByState]);
@@ -174,8 +167,6 @@ export default function Employees({ members, teamId }: MembersProps) {
         handleIsSafeFilter={handleIsSafeFilter}
         filterIsMobilized={filterIsMobilized}
         handleIsMobilizedFilter={handleIsMobilizedFilter}
-        filterAbleToAssist={filterAbleToAssist}
-        handleAbleToAssistFilter={handleAbleToAssistFilter}
         filterCanWork={filterCanWork}
         handleCanWorkFilter={handleCanWorkFilter}
         handleClearFilters={handleClearFilters}
