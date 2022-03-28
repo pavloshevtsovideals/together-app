@@ -9,7 +9,6 @@ import { MemberService } from './MemberService';
 import { MessageService } from './MessageService';
 import { SlackMemberService } from './SlackMemberService';
 import { SlackRequestService } from './SlackRequestService';
-import { LocationProviderError } from '../exceptions';
 import { connection, validateAndReturnConnection } from '../db';
 import {
   HOST,
@@ -19,6 +18,7 @@ import {
   GOOGLE_GEOCODING_API_TOKEN,
   SLACK_MONITORING_CHANNEL_ID,
   SLACK_ORGANIZATION_CHANNEL_ID,
+  SLACK_WORKSPACE_ID,
   filterSlackMemberRule,
   memberIsAtRiskRule,
   remindIfNotCheckedInWithinRule,
@@ -37,10 +37,12 @@ export const locationService = new LocationService({
   baseUrl: 'https://maps.googleapis.com/maps/api',
   token: GOOGLE_GEOCODING_API_TOKEN,
   language: 'en',
-  errorClass: LocationProviderError,
 });
 
-const slackMemberService = new SlackMemberService({ httpClient: slackClient });
+const slackMemberService = new SlackMemberService({
+  httpClient: slackClient,
+  teamId: SLACK_WORKSPACE_ID,
+});
 
 const uniqueStringGenerator = new Uuid4IdGenerator({ generator: v4 });
 
